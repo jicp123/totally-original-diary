@@ -5,17 +5,22 @@
 
 from datetime import datetime
 import pathlib
-
+import sys
 def main():
     date = datetime.now()
-    while True:
-        print(f"{date.strftime("%A, %B %d, %Y")}")
-        choice = input("""
+    print(f"{date.strftime("%A, %B %d, %Y")}")
+    choice = input("""
          [1] Write a new entry
          [2] Read past entries 
          [3] Exit 
-                    """) 
-        break
-    print(choice)
+                    """)
+    while True: 
+         choice = input("What would you like to do?: ").strip()
+         if choice == 1:
+            pass
+         if choice == 2:
+            pass
+         if choice == 3:
+            sys.exit()
 
 main()
