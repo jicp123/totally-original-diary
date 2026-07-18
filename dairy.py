@@ -42,5 +42,14 @@ def view():
         filenames[i] = x.stem 
     print(filenames)
 
+    while True:
+     choose = input("Which would you like to view? (Input the number): ").strip()
+   
+     filenames[choose] 
+     #except KeyError:
+        #print("Input a valid number.")
+        #print(filenames)
+    
+
 
 view()
