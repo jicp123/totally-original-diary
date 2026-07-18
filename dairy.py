@@ -36,11 +36,10 @@ def writenew(date):
         file.write(f"{entry}")  
 
 def view():
-    n = -1
     filenames = {}
     path = pathlib.Path("log")
-    for x in path.iterdir():
-        filenames[n+1] = x.stem      
+    for i, x in enumerate(path.iterdir(), 1):
+        filenames[i] = x.stem 
     print(filenames)
 
 
