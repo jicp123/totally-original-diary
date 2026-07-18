@@ -38,17 +38,23 @@ def writenew(date):
 def view():
     filenames = {}
     path = pathlib.Path("log")
-    for i, x in enumerate(path.iterdir(), 1):
+    for i, x in enumerate(path.iterdir(), start=1):
         filenames[i] = x.stem 
     print(filenames)
 
     while True:
-     choose = input("Which would you like to view? (Input the number): ").strip()
-   
-     filenames[choose] 
-     #except KeyError:
-        #print("Input a valid number.")
-        #print(filenames)
+     choose = int(input("Which would you like to view? (Input the number): ").strip())
+     try:
+        x = filenames[choose] 
+        break 
+     except KeyError:
+        print("Input a valid number.")
+        print(filenames)
+
+    filepath = pathlib.Path("log")/ f"{x}.txt"
+    with open(filepath, "r") as file:
+       contents = file.read()
+       print(contents)
     
 
 
