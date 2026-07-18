@@ -6,6 +6,7 @@
 from datetime import datetime
 import pathlib
 import sys
+import re
 def main():
     date = datetime.now()
     print(f"{date.strftime("%A, %B %d, %Y")}")
@@ -34,4 +35,13 @@ def writenew(date):
         entry = input("Start writing here: ")
         file.write(f"{entry}")  
 
-main()
+def view():
+    n = -1
+    filenames = {}
+    path = pathlib.Path("log")
+    for x in path.iterdir():
+        filenames[n+1] = x.stem      
+    print(filenames)
+
+
+view()
