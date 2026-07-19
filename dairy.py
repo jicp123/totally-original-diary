@@ -6,7 +6,7 @@
 from datetime import datetime
 import pathlib
 import sys
-import re
+import time
 def main():
     date = datetime.now()
     print(f"{date.strftime("%A, %B %d, %Y")}")
@@ -22,7 +22,8 @@ def main():
             writenew(date)
             break
          elif choice == "2":
-            pass
+            view()
+            break
          elif choice == "3":
             sys.exit()
          else:
@@ -30,10 +31,11 @@ def main():
 
 def writenew(date):
     filename = date.strftime("%m-%d, %Hh%Mm%Ss")
-    filepath = pathlib.Path("log")/filename
+    filepath = pathlib.Path("log")/f"{filename}.txt"
     with open(filepath, "a") as file:
         entry = input("Start writing here: ")
         file.write(f"{entry}")  
+    main()
 
 def view():
     filenames = {}
@@ -51,11 +53,13 @@ def view():
         print("Input a valid number.")
         print(filenames)
 
-    filepath = pathlib.Path("log")/ f"{x}.txt"
+    filepath = pathlib.Path("log")/f"{x}.txt"
     with open(filepath, "r") as file:
        contents = file.read()
        print(contents)
+       time.sleep(5)
+    main()
     
 
 
-view()
+main()
